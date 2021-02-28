@@ -34,9 +34,8 @@ export class FormularioClientesComponent implements OnInit {
          nombre = this.formulario.value.nombre
          apellido = this.formulario.value.apellido
          direccion = this.formulario.value.direccion
-         
-         this._clientesService.cargarCliente(nombre,apellido,direccion).subscribe();
-         this.router.navigate(['/listaClientes']);
+         //Recivo la promesa del metodo cargar cliente y cuando se resuelve navego a la siguiente pagina
+         this._clientesService.cargarCliente(nombre,apellido,direccion).then(res => this.router.navigate(['/listaClientes']));
        }
        else
          alert("Ocurrio un error al ingresar los datos. La informacion debe contener al menos 3 caracteres.")

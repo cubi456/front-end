@@ -17,16 +17,16 @@ export class ClientesService {
 
 
   //Cargo un nuevo cliente y lo guardo en el backend
-  cargarCliente(nombre:string,apellido:string,direccion:string):Observable<Cliente>
+  async cargarCliente(nombre:string,apellido:string,direccion:string)
   {
      let cliente:Cliente = new Cliente(nombre,apellido,direccion);
-     return this.http.post<Cliente>(this._url,cliente);
+     return await this.http.post<Cliente>(this._url,cliente).toPromise();
   }
 
   //Recupera los clientes desde el backEnd
-  recuperarClientes():Observable<Cliente[]>
-  {
-    return this.http.get<Cliente[]>(this._url);
+  async recuperarClientes():Promise<Cliente[]>
+  {     
+    return this.http.get<Cliente[]>(this._url).toPromise();
   }
 
 }

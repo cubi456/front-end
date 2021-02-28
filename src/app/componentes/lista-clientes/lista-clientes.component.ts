@@ -15,7 +15,12 @@ export class ListaClientesComponent implements OnInit {
   constructor(public _clientesService:ClientesService) { }
 
   ngOnInit(): void {
-    this._clientesService.recuperarClientes().subscribe(data=>this.clientes);
+    this.actualizarClientes();
+  }
+
+  async actualizarClientes()
+  {
+      this.clientes = await this._clientesService.recuperarClientes();
   }
 
 }
