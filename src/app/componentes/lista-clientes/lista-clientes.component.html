@@ -16,9 +16,9 @@
                         <!-- Uso de ngFor para recorrer el arreglo de clientes ubicado en el componente-->
                         <tr *ngFor="let cliente of clientes;let j=index">
                             <th scope="row">{{j+1}}</th>
-                            <td>{{cliente.nombre}}</td>
-                            <td>{{cliente.apellido}}</td>
-                            <td>{{cliente.direccion}}</td>
+                            <td>{{cliente._nombre}}</td>
+                            <td>{{cliente._apellido}}</td>
+                            <td>{{cliente._direccion}}</td>
                         </tr>
                     </tbody>
                 </table>

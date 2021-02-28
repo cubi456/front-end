@@ -10,16 +10,16 @@ export class Cliente{
         this._direccion=direccion;
     }
 
-    get nombre()
+    get nombre():string
     {
         return this._nombre;
     }
 
-    get apellido()
+    get apellido():string
     {
         return this._apellido;
     }
-    get direccion()
+    get direccion():string
     {
         return this._direccion;
     }

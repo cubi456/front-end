@@ -5,16 +5,22 @@ import { Cliente } from '../scripts/cliente';
   providedIn: 'root'
 })
 export class ClientesService {
-
-  constructor() { }
-
+  
+  clientes:Cliente[]=[];
+  //Recupero la lista de clientes
+  constructor() { 
+    this.obtenerListaClientes();
+  }
+  //Cargo un nuevo cliento y lo guardo como JSON
   cargarCliente(nombre:string,apellido:string,direccion:string)
   {
-
+    this.clientes.push(new Cliente(nombre,apellido,direccion));
+    localStorage.setItem('clientes',JSON.stringify(this.clientes));
   }
-
+  //Obtengo JSON con todos los clientes
   obtenerListaClientes():Cliente[]
   {
-      return null;
+    this.clientes = JSON.parse(localStorage.getItem('clientes') || '[]');
+    return this.clientes;
   }
 }
