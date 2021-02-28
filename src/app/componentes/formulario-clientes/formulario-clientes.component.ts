@@ -35,7 +35,7 @@ export class FormularioClientesComponent implements OnInit {
          apellido = this.formulario.value.apellido
          direccion = this.formulario.value.direccion
          
-         this._clientesService.cargarCliente(nombre,apellido,direccion);
+         this._clientesService.cargarCliente(nombre,apellido,direccion).subscribe();
          this.router.navigate(['/listaClientes']);
        }
        else

@@ -7,6 +7,7 @@ import { FormularioClientesComponent } from './componentes/formulario-clientes/f
 import { ListaClientesComponent } from './componentes/lista-clientes/lista-clientes.component';
 import { APP_ROUTES } from './app.routes';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     APP_ROUTES,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

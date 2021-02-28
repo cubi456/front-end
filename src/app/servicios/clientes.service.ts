@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
+import { dashCaseToCamelCase } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Cliente } from '../scripts/cliente';
 
 @Injectable({
@@ -7,20 +10,23 @@ import { Cliente } from '../scripts/cliente';
 export class ClientesService {
   
   clientes:Cliente[]=[];
-  //Recupero la lista de clientes
-  constructor() { 
-    this.obtenerListaClientes();
-  }
-  //Cargo un nuevo cliento y lo guardo como JSON
-  cargarCliente(nombre:string,apellido:string,direccion:string)
+  private _url:string = "http://localhost:8080/clientes";
+
+
+  constructor(private http:HttpClient) {  }
+
+
+  //Cargo un nuevo cliente y lo guardo en el backend
+  cargarCliente(nombre:string,apellido:string,direccion:string):Observable<Cliente>
   {
-    this.clientes.push(new Cliente(nombre,apellido,direccion));
-    localStorage.setItem('clientes',JSON.stringify(this.clientes));
+     let cliente:Cliente = new Cliente(nombre,apellido,direccion);
+     return this.http.post<Cliente>(this._url,cliente);
   }
-  //Obtengo JSON con todos los clientes
-  obtenerListaClientes():Cliente[]
+
+  //Recupera los clientes desde el backEnd
+  recuperarClientes():Observable<Cliente[]>
   {
-    this.clientes = JSON.parse(localStorage.getItem('clientes') || '[]');
-    return this.clientes;
+    return this.http.get<Cliente[]>(this._url);
   }
+
 }
