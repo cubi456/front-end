@@ -1,1 +1,25 @@
-<p>formulario-clientes works!</p>
+<!-- Formulario para la obtencion de datos-->
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <!-- Le asigno el formulario como variable de angular e indico que debe ser validado cuando ocurre el evento submit-->
+                <form [formGroup]="formulario" novalidate (ngSubmit)="nuevoCliente()">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" formControlName="nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" formControlName="apellido">
+                    </div>
+                    <div class="mb-3">
+                        <label for="direccion" class="form-label">Direccion</label>
+                        <input type="text" class="form-control" formControlName="direccion">
+                    </div>
+                    <span id="error"></span>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>

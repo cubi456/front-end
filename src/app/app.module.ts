@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormularioClientesComponent } from './componentes/formulario-clientes/formulario-clientes.component';
 import { ListaClientesComponent } from './componentes/lista-clientes/lista-clientes.component';
+import { APP_ROUTES } from './app.routes';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { ListaClientesComponent } from './componentes/lista-clientes/lista-clien
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    APP_ROUTES,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
