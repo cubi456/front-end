@@ -1,7 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { dashCaseToCamelCase } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Cliente } from '../scripts/cliente';
 
 @Injectable({
@@ -16,14 +14,20 @@ export class ClientesService {
   constructor(private http:HttpClient) {  }
 
 
-  //Cargo un nuevo cliente y lo guardo en el backend
-  async cargarCliente(nombre:string,apellido:string,direccion:string)
+  /**
+   * Este metodo crea un nuevo cliente y lo almacena en el servidor.
+   * Retorna una promesa.
+   */
+  async cargarCliente(nombre:string,apellido:string,direccion:string):Promise<Cliente>
   {
      let cliente:Cliente = new Cliente(nombre,apellido,direccion);
      return await this.http.post<Cliente>(this._url,cliente).toPromise();
   }
 
-  //Recupera los clientes desde el backEnd
+  /**
+   * Este metodo recupera la listas de clientes del servidor.
+   * Retorna una promesa.
+   */
   async recuperarClientes():Promise<Cliente[]>
   {     
     return this.http.get<Cliente[]>(this._url).toPromise();

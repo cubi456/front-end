@@ -23,9 +23,10 @@ export class FormularioClientesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  /** Tomo los datos correspondientes al formulario,
-   *  le indico al servicio que cargue un nuevo cliente 
-   *  y ruteo a la tabla de clientes */
+  /** Este metodo toma los datos correspondientes del formulario
+   *  y solicita al servicio cliente que cree un nuevo cliente. 
+   *  Una vez completada la accion rutea a la tabla de clientes
+   *  o muestra un cartel de error. */
   nuevoCliente()
   {
       if(this.formulario.valid)
@@ -35,7 +36,9 @@ export class FormularioClientesComponent implements OnInit {
          apellido = this.formulario.value.apellido
          direccion = this.formulario.value.direccion
          //Recivo la promesa del metodo cargar cliente y cuando se resuelve navego a la siguiente pagina
-         this._clientesService.cargarCliente(nombre,apellido,direccion).then(res => this.router.navigate(['/listaClientes']));
+         this._clientesService.cargarCliente(nombre,apellido,direccion)
+             .then(res => this.router.navigate(['/listaClientes']))
+             .catch(err => alert("Ocurrio un error al intentar almacenar los datos."));
        }
        else
          alert("Ocurrio un error al ingresar los datos. La informacion debe contener al menos 3 caracteres.")

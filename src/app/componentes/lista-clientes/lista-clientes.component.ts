@@ -17,7 +17,11 @@ export class ListaClientesComponent implements OnInit {
   ngOnInit(): void {
     this.actualizarClientes();
   }
-
+  
+  /**
+   * Solicita la lista de clientes al servicio cliente
+   * y los almacena dentro del array clientes.
+   */
   async actualizarClientes()
   {
       this.clientes = await this._clientesService.recuperarClientes();
