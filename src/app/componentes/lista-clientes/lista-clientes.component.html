@@ -1,1 +1,29 @@
-<p>lista-clientes works!</p>
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <!-- Creacion de la tabla donde colocar componentes-->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Aepllido</th>
+                            <th scope="col">Direccion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Uso de ngFor para recorrer el arreglo de clientes ubicado en el componente-->
+                        <tr *ngFor="let cliente of clientes;let j=index">
+                            <th scope="row">{{j+1}}</th>
+                            <td>{{cliente.nombre}}</td>
+                            <td>{{cliente.apellido}}</td>
+                            <td>{{cliente.direccion}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- Rutoeo nuevamente hacia el formulario-->
+                <button [routerLink]="['/formularioClientes']" routerLinkActive="router-link-active" type="button" class="btn btn-primary">Volver al formulario</button>
+            </div>
+        </div>
+    </div>
