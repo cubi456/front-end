@@ -30,7 +30,7 @@ export class ClientesService {
    */
   async recuperarClientes():Promise<Cliente[]>
   {     
-    return this.http.get<Cliente[]>(this._url).toPromise();
+    return await this.http.get<Cliente[]>(this._url).toPromise();
   }
 
 }
